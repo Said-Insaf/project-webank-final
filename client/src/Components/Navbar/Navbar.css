@@ -1,0 +1,13 @@
+
+body {
+  background: linear-gradient(70deg, white, #f7f7f7);
+  color: #514B64;
+  min-height: 100vh;
+}
+
+code {
+  background: white;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  margin: 0 0.3rem;
+}

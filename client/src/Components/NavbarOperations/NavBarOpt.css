@@ -1,0 +1,64 @@
+.navOpt {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.navOpt li {
+  padding: 0px 0px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: gray;
+  z-index: 10;
+  cursor: pointer;
+  width: 10%;
+}
+
+.navOpt li:active {
+  background-color: rgb(10, 122, 233);
+}
+
+.navOpt li:hover h3.hdn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.navOpt h3.hdn {
+  display: none;
+}
+
+.navOpt h3 {
+  font-size: 16px;
+  background-color: gray;
+  margin: 0px;
+  padding: 0px 20px;
+  width: 100%;
+  min-height: 70px;
+
+  text-align: center;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.navOpt h3:hover {
+  background-color: dodgerblue;
+}
+
+.App {
+  background-color: rgb(21, 39, 51) !important;
+}
+
+.well {
+  color: black;
+}
