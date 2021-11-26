@@ -70,9 +70,9 @@ const Footer = () => {
           className="text-center p-3"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2020 Copyright:
-          <a className="text-white" href="https://mdbootstrap.com/">
-            MDBootstrap.com
+          © 2021 Copyright:
+          <a className="text-white" href="https://WeBank.tn.com/">
+            WeBank.tn.com
           </a>
         </div>
         {/* Copyright */}
