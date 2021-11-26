@@ -4,7 +4,6 @@ import conseillers from "../../Assets/conseillers.jpg";
 import créditEtudes from "../../Assets/créditEtudes.jpg";
 import oBank from "../../Assets/oBank.jpeg";
 import créditImmob from "../../Assets/créditImmob.jpg";
-import prtgEnf from "../../Assets/prtgEnf.jpg";
 import Fintech from "../../Assets/Fintech.jpg";
 import FondationJ from "../../Assets/FondationJ.jpg";
 import epargneProj from "../../Assets/epargneProj.jpg";
@@ -12,15 +11,7 @@ import "./LandPage.css";
 const LandPage = () => {
   return (
     <div>
-      {/* <title>Bootstrap Example</title> 
-   <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
-      {/* <style
-        dangerouslySetInnerHTML={{
-          __html:
-            "\n  .carousel-inner > .item > img,\n  .carousel-inner > .item > a > img {\n    width: 70%;\n    margin: auto;\n  }\n  ",
-        }}
-      /> */}
+    
       <div className="container">
         <br />
         <div id="myCarousel" className="carousel slide" data-ride="carousel">
@@ -50,8 +41,8 @@ const LandPage = () => {
             </div>
             <div className="item">
               <img
-                src="FlayessC3.png"
-                alt="FlayessC3"
+                src="FlayessC33.png"
+                alt="FlayessC33"
                 width="100%"
                 height={345}
               />
@@ -104,7 +95,7 @@ const LandPage = () => {
       </div>
       <br />
       <div className="hello">
-        <ul>
+        <ul className="bleu">
           <li>
             <a className="active" href="#home">
               Le GROUPE WEBANK

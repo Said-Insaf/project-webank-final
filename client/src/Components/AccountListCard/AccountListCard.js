@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SimpleDialog from "../Dialogue/Dialogue.js";
 import { deleteUser, getUser } from "../../JS/actions/agent";
 import { toggleEdit, toggleAdd } from "../../JS/actions/editAdd";
-import "./AccountListCard.css"
+// import "./AccountListCard.css"
 // import deleteBtn from "../../Assets/delete.png";
 const AccountListCard = ({ newUser, user }) => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const AccountListCard = ({ newUser, user }) => {
                   </thead>
                   <tbody>
                     <tr>
-                      <Link to="/add">
+                      {/* <Link to="/add">
                         <button
                           onClick={() => dispatch(toggleAdd())}
                           // onClick={()=>dispatch(toggleAdd(newUser))}
@@ -74,7 +74,7 @@ const AccountListCard = ({ newUser, user }) => {
                             <i className="fa fa-pencil fa-stack-1x fa-inverse" />
                           </span>
                         </button>
-                      </Link>
+                      </Link> */}
 
                       <td>
                         {/* <img
@@ -125,7 +125,7 @@ const AccountListCard = ({ newUser, user }) => {
                           </button>
                         </Link>
                         <Link to={`/newCompte/${user._id}`}>
-                          <button >
+                          <button>
                             <span className="fa-stack">
                               <i className="fa fa-stack-2x fa-key" />
                               {/* <i className="fa fa-trash-o fa-stack-1x fa-inverse" /> */}

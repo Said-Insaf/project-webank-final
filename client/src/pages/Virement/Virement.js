@@ -112,7 +112,7 @@ const Virement = () => {
                 <h3>
                   Cher client, votre virement a été bien effectuée du Numero de
                   compte de l'emetteur {fin_opt.c1.RIB} vers le Numero de compte
-                de destinateur{fin_opt.c2.RIB}{" "}
+                de destinateur {fin_opt.c2.RIB}{" "}
                 </h3>
 
                 <h3>
