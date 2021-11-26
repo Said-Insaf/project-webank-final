@@ -33,12 +33,21 @@ router.get("/:_id", getOneUser);
 
 // const isAuth = require("../middlewere/isAuth");
 // const { isAgent } = require("../middlewere/Role");
+//const {isAdminAgent} =require ("../middlewere/Role")
+//const {isStrictAdmin} =require ("../middlewere/Role")
+// router.get("/preverified", isAuth, isAdminAgent, UnverifiedUsers);
+// router.get("/accounts", isAuth, isAdminAgent, getAllUsers);
 
-// router.get("/preverified", isAuth, isAgent, UnverifiedUsers);
-// router.get("/accounts", isAuth, isAgent, getAllUsers);
+// router.get("/getOneUser/:_id", isAuth, isAdminAgent, getOneUser);
 
-// router.get("/getOneUser/:userId", isAuth, isAgent, getOneUser);
+// router.put("/ajoutCompte/:_id", isAuth, isAdminAgent, VerificationUsers);
+//router.get("/csltUser",isAuth, isAdminAgent, csltUser);
+// router.get("/histoUser", isAuth, isAdminAgent, histoUser);
 
-// router.put("/ajoutCompte/:userId", isAuth, isAgent, VerificationUsers);
+// //router.delete("/:_id",isAuth, isStrictAdmin, deleteUser);
+// router.put("/:_id",isAuth, isAdminAgent, EditUser);
+// router.get("/allAgents",isAuth, isStrictAdmin, GetAllAgents);
+
+// router.post("/newBankAgent",isAuth, isStrictAdmin, signupAgent);
 
 module.exports = router;
