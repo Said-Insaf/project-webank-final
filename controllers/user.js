@@ -15,7 +15,7 @@ exports.signup = async (req, res, next) => {
         .status(400)
         .send({ errors: [{ msg: "Email should be unique" }] });
     }
-    console.log(foundUser + "hani hne");
+    console.log(foundUser + "je suis là");
 
     const newUser = await User.create({ ...req.body });
     // envoi mail
@@ -88,7 +88,9 @@ exports.consulter = async (req, res) => {
     );*/
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ errors: [{ msg: "famma 7keya" }] });
+    return res
+      .status(400)
+      .send({ errors: [{ msg: "y'a quelque chose qui cloche" }] });
   }
 };
 
@@ -113,6 +115,8 @@ exports.myHisto = async (req, res) => {
     return res.status(400).send({ msg: "verifier votre rib", compte :null });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ errors: [{ msg: "famma 7keya" }] });
+    return res
+      .status(400)
+      .send({ errors: [{ msg: "y'a quelque chose qui cloche" }] });
   }
 };

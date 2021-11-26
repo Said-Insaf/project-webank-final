@@ -2,7 +2,7 @@ import { Route, Switch, Redirect } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { current } from "./JS/actions/user";
-import Errors from "./pages/Errors";
+import Errors from "./pages/Errors/Errors";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";

@@ -33,7 +33,7 @@ exports.CreateAccount = async (req, res, next) => {
       .json({ msg: "compte created successfully", data: user });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ msg: "famma 7keya saret" });
+    return res.status(400).json({ msg: "y'a quelque chose qui cloche" });
   }
 };
 

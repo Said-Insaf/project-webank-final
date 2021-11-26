@@ -110,35 +110,36 @@ const Virement = () => {
             {fin_opt !== null ? (
               <>
                 <h3>
-                  {" "}
-                  virement affectée avec succée du compte {fin_opt.c1.RIB} vers
-                  le compte {fin_opt.c2.RIB}{" "}
+                  Cher client, votre virement a été bien effectuée du Numero de
+                  compte de l'emetteur {fin_opt.c1.RIB} vers le Numero de compte
+                de destinateur{fin_opt.c2.RIB}{" "}
                 </h3>
 
                 <h3>
-                  compte initiale {fin_opt.c1.RIB} solde initiale
+                  compte initiale {fin_opt.c1.RIB} 
+                  solde initiale
                   {Number(fin_opt.c1.soldeinitial) + Number(fin_opt.montant)}
                 </h3>
 
                 <h3>
-                  compte final {fin_opt.c2.RIB} solde initiale
+                  Compte final {fin_opt.c2.RIB} Solde initiale
                   {fin_opt.c2.soldeinitial - fin_opt.montant}
                 </h3>
 
                 <hr />
 
                 <h3>
-                  compte initiale {fin_opt.c1.RIB} solde finale
+                  Compte initiale {fin_opt.c1.RIB} Solde finale
                   {fin_opt.c1.soldeinitial}
                 </h3>
 
                 <h3>
-                  compte final {fin_opt.c2.RIB} solde finale
+                  Compte final {fin_opt.c2.RIB} Solde finale
                   {fin_opt.c2.soldeinitial}
                 </h3>
 
                 <hr />
-                <h3> montant : {fin_opt.montant} </h3>
+                <h3> Montant : {fin_opt.montant} </h3>
               </>
             ) : null}
           </div>

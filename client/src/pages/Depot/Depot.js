@@ -87,13 +87,17 @@ const Depot = () => {
             ""
           ) : (
             <div>
-              <h1>le compte de rib : {fin_opt.RIB} mise à jour avec succées</h1>
               <h1>
-                ancien solde :
+                {" "}
+                Cher client,Votre opération de depot a été bien effectuée. Le Numero de
+                compte : {fin_opt.RIB} a été mise à jour avec succès
+              </h1>
+              <h1>
+                Ancien solde :
                 {Number(fin_opt.soldeinitial) + Number(compte.montant)}
               </h1>
-              <h1> montant : {compte.montant}</h1>
-              <h1> nouveau solde : {fin_opt.soldeinitial}</h1>
+              <h1> Montant à déposer : {compte.montant}</h1>
+              <h1> Nouveau solde : {fin_opt.soldeinitial}</h1>
             </div>
           )}
         </div>

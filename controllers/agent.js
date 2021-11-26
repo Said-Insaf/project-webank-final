@@ -43,7 +43,7 @@ exports.VerificationUsers = async (req, res, next) => {
       .json({ msg: "compte created successfully", data: user });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ msg: "famma 7keya saret" });
+    return res.status(400).json({ msg: "y'a quelque chose qui cloche" });
   }
 };
 exports.GetAllAgents = async (req, res) => {
@@ -207,7 +207,7 @@ exports.newCompte = async (req, res) => {
       .json({ msg: "compte created successfully", cptes: user });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ msg: "famma 7keya saret" });
+    return res.status(400).json({ msg: "y'a quelque chose qui cloche là" });
   }
 };
 
@@ -245,7 +245,9 @@ exports.csltUser = async (req, res) => {
     return res.status(400).send({ msg: "verifier votre rib" });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ errors: [{ msg: "famma 7keya" }] });
+    return res
+      .status(400)
+      .send({ errors: [{ msg: "y'a quelque chose qui cloche içi" }] });
   }
 };
 
@@ -267,7 +269,9 @@ exports.histoUser = async (req, res) => {
     return res.status(400).send({ msg: "verifier votre rib" });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ errors: [{ msg: "famma 7keya" }] });
+    return res
+      .status(400)
+      .send({ errors: [{ msg: "y'a quelque chose qui ne va pas" }] });
   }
 };
 

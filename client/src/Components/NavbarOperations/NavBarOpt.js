@@ -1,10 +1,10 @@
 import React from "react";
-import "./NavBarOpt.css";
+
 import { CLEAR_ALL } from "../../JS/actionTypes/compte";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-
+import "./NavBarOpt.css";
 const NavbarOpt = () => {
   const user = useSelector((state) => state.userReducer.user);
   const history = useHistory();

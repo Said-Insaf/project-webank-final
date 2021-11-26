@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SimpleDialog from "../Dialogue/Dialogue.js";
 import { deleteUser, getUser } from "../../JS/actions/agent";
 import { toggleEdit, toggleAdd } from "../../JS/actions/editAdd";
-
+import "./AccountListCard.css"
 // import deleteBtn from "../../Assets/delete.png";
 const AccountListCard = ({ newUser, user }) => {
   const dispatch = useDispatch();
