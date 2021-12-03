@@ -55,7 +55,7 @@ export const retraitUser = (compte) => async (dispatch) => {
     });
   }
 };
-export const verifUsers = (id, newCompte) => async (dispatch) => {
+export const verifUsers = (id, newCompte, forward) => async (dispatch) => {
   dispatch({ type: LOAD_COMPTE });
   try {
     console.log(newCompte);
@@ -66,6 +66,7 @@ export const verifUsers = (id, newCompte) => async (dispatch) => {
     console.log(result);
     console.log("*************************");
     dispatch({ type: VERIF_SUCCESS, payload: result.data.data });
+    forward();
   } catch (error) {
     dispatch({
       type: FAIL_COMPTE,

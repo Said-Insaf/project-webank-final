@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SimpleDialog from "../Dialogue/Dialogue.js";
 import { deleteUser, getUser } from "../../JS/actions/agent";
 import { toggleEdit, toggleAdd } from "../../JS/actions/editAdd";
-// import "./AccountListCard.css"
+import "./AccountListCard.css"
 // import deleteBtn from "../../Assets/delete.png";
 const AccountListCard = ({ newUser, user }) => {
   const dispatch = useDispatch();
@@ -33,10 +33,10 @@ const AccountListCard = ({ newUser, user }) => {
         handleClose={handleClose}
         compte={user.compte}
       />
-      <link
+      {/* <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
         rel="stylesheet"
-      />
+      /> */}
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

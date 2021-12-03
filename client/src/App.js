@@ -37,6 +37,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <div>
       <Navbar />
       <NavbarOpt />
       <Switch>
@@ -81,8 +82,8 @@ function App() {
           </>
         )}
       </Switch>
-
-      <Switch>{/* <Route path="/error" component={Errors} /> */}</Switch>
+      </div>
+      {/*<Switch> <Route path="/error" component={Errors} /></Switch> */}
 
       <Footer />
     </div>

@@ -9,6 +9,9 @@ const Create = () => {
   const dispatch = useDispatch();
   const edit = useSelector((state) => state.editAddReducer.edit);
   const userToEdit = useSelector((state) => state.accountReducer.user);
+  
+
+
 
   useEffect(() => {
     edit
@@ -42,7 +45,6 @@ const Create = () => {
 
   return (
     <div>
-      
       {/*---- Include the above in your HEAD tag --------*/}
       <div className="container">
         <h1 className="well">Fiche Client</h1>
@@ -284,4 +286,3 @@ const Create = () => {
   );
 };
 export default Create;
-

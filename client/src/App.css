@@ -1,6 +1,14 @@
 .App {
   text-align: center;
-  color:white;
+  display: flex;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer {
+  margin-top: 80px;
 }
 
 .App-logo {

@@ -1,19 +1,20 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../../JS/actions/user";
+import UploadImg from "./UploadImage";
 import "./SignUp.css";
-const SignUp = ({history}) => {
-const [newUser, setNewUser] = useState({
-    firstName:"",
+const SignUp = ({ history }) => {
+  const [newUser, setNewUser] = useState({
+    firstName: "",
     email: "",
-    lastName:"",
+    lastName: "",
     password: "",
     CIN: "",
     gender: "",
     position: "",
-    phone :"",
-    adresse:"",
+    phone: "",
+    adresse: "",
   });
 
   // console.log(newUser);
@@ -21,6 +22,30 @@ const [newUser, setNewUser] = useState({
   const handleChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
+  const [imgUrl1, setImgUrl1] = useState("");
+  const [progress1, setProgress1] = useState(0);
+
+  const [imgUrl2, setImgUrl2] = useState("");
+  const [progress2, setProgress2] = useState(0);
+
+  const Upload1 = (event) => {
+    let file = event.target.files[0];
+    UploadImg(file, setImgUrl1, setProgress1);
+  };
+
+  const Upload2 = (event) => {
+    let file = event.target.files[0];
+    UploadImg(file, setImgUrl2, setProgress2);
+  };
+
+  useEffect(() => {
+    setNewUser({ ...newUser, photo: imgUrl1 });
+  }, [imgUrl1]);
+
+  useEffect(() => {
+    setNewUser({ ...newUser, photo2: imgUrl2 });
+  }, [imgUrl2]);
+
   // const handleSelect = (e) => {
   //   setNewUser({ ...newUser, [e.target.value]: e.target.value });
   // };
@@ -231,7 +256,8 @@ const [newUser, setNewUser] = useState({
                     className="col-md-4 control-label"
                     htmlFor="filebutton"
                   >
-                    Scannez votre CIN !
+                    Scannez votre CIN (recto) !{" "}
+                    {progress1 === 0 ? "" : `uploading : ${progress1} %`}
                   </label>
                   <div>
                     <input
@@ -239,6 +265,27 @@ const [newUser, setNewUser] = useState({
                       className="input-file"
                       id="filebutton"
                       type="file"
+                      onChange={Upload1}
+                    />
+                  </div>
+                </div>
+                <br/>
+
+                <div className="form-group">
+                  <label
+                    className="col-md-4 control-label"
+                    htmlFor="filebutton"
+                  >
+                    Scannez votre CIN (verso) !{" "}
+                    {progress2 === 0 ? "" : `uploading : ${progress2} %`}
+                  </label>
+                  <div>
+                    <input
+                      name="filebutton"
+                      className="input-file"
+                      id="filebutton"
+                      type="file"
+                      onChange={Upload2}
                     />
                   </div>
                 </div>

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { newCptUser } from "../../JS/actions/compte";
 import { useDispatch } from "react-redux";
-const NewCptUsers = ({match}) => {
+
+const NewCptUsers = ({ match }) => {
   const [compte, setCompte] = useState({
     RIB: "",
     soldeinitial: "",
@@ -13,6 +14,8 @@ const NewCptUsers = ({match}) => {
   const handleChange = (e) => {
     setCompte({ ...compte, [e.target.name]: e.target.value });
   };
+
+
   return (
     <div>
       <label>RIB </label>

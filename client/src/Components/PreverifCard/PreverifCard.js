@@ -38,6 +38,9 @@ const PreverifCard = ({ user }) => {
               <th scope="col" className="border-0 text-uppercase font-medium">
                 Contact
               </th>
+              <th scope="col" className="border-0 text-uppercase font-medium">
+                CinImg
+              </th>
               {/* <th
                         scope="col"
                         className="border-0 text-uppercase font-medium"
@@ -89,6 +92,20 @@ const PreverifCard = ({ user }) => {
                   <br />
                   <span className="text-muted">
                     {(user && user.phone) || ""}
+                  </span>
+                </td>
+
+                <td>
+                  <span className="text-muted">
+                    <a href={(user && user.photo) || ""} target="_blank">
+                      Cin Url recto{" "}
+                    </a>
+                  </span>
+                    <br />
+                    <span className="text-muted">
+                    <a href={(user && user.photo2) || ""} target="_blank">
+                      Cin Url verso{" "}
+                    </a>
                   </span>
                 </td>
 

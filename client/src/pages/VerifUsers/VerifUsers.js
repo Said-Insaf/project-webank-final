@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { verifUsers } from "../../JS/actions/compte";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 const VerifUsers = (props) => {
+  const history = useHistory();
+
   const [compte, setCompte] = useState({
     RIB: "",
     soldeinitial: "",
@@ -12,6 +16,9 @@ const VerifUsers = (props) => {
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setCompte({ ...compte, [e.target.name]: e.target.value });
+  };
+  const forward = () => {
+    history.push("/accounts");
   };
   return (
     <div>
@@ -37,7 +44,11 @@ const VerifUsers = (props) => {
         value={compte.nature}
         onChange={handleChange}
       />
-      <Button onClick={() => dispatch(verifUsers(props.match.params.id,compte))}>
+      <Button
+        onClick={() =>
+          dispatch(verifUsers(props.match.params.id, compte, forward))
+        }
+      >
         Register Compte
       </Button>
     </div>
