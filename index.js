@@ -18,6 +18,7 @@ const app = express();
 connectDB();
 //corss
 app.use(cors(corsOptions));
+console.log("server ykhdem")
 //routing
 
 //middlewere golobal
