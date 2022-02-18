@@ -7,11 +7,12 @@ import {
   SIGNUP_AGENT_SUCCESS,
   GET_ALL_AGENT_SUCCESS,
   GET_UNVERIF_SUCCESS,
-
+  FAIL_AGENT,
+  CLEAR_ERRORS,
 } from "../actionTypes/agent";
 //initial state
 const initialState = {
-  accountList: [],
+  accountList: null,
   user: {},
   errors: null,
   load: false,
@@ -37,7 +38,10 @@ const accountReducer = (state = initialState, { type, payload }) => {
       return { ...state, agentList: payload, load: false };
     case GET_UNVERIF_SUCCESS:
       return { ...state, accountList: payload.UnverifiedUsers, load: false };
-    
+    case FAIL_AGENT:
+      return { ...state, loadUser: false, errors: payload.errors };
+    case CLEAR_ERRORS:
+      return { ...state, loadUser: false, errors: null };
     default:
       return state;
   }

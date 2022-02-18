@@ -1,6 +1,6 @@
 import { Route, Switch, Redirect } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { current } from "./JS/actions/user";
 import Errors from "./pages/Errors/Errors";
 import SignIn from "./pages/SignIn/SignIn";
@@ -27,48 +27,33 @@ import ConsultationSldBank from "./pages/ConsultationSldParBank/ConsultationSldB
 import HistoComptes from "./pages/HistoComptes/HistoComptes";
 import MyHistorique from "./pages/MyHistoriques/MyHistorique";
 import "./App.css";
-import Loading from "./Components/Loading/Loading";
 // import ConsultationSldBank from "./pages/ConsultationSldBank/ConsultationSldBank"
 
 function App() {
   const dispatch = useDispatch();
   const userNow = useSelector((state) => state.userReducer.user);
-  const [spiner, setSpin] = useState(true);
   useEffect(() => {
     dispatch(current());
   }, []);
-  useEffect(() => {
-    if (userNow.role) {
-      setSpin(false);
-    }
-    if (!localStorage.token) {
-      setSpin(false);
-    }
-  }, [userNow]);
   return (
     <div className="App">
-      {spiner ? (
-        <Loading />
-      ) : (
-        <div>
-          <Navbar />
-          <NavbarOpt />
-          {!userNow.role ? (
-            <Switch>
-              <Route path="/signup" component={SignUp} />
-              <Route path="/signin" component={SignIn} />
-              <Route exact path="/home" component={LandPage} />
-              <Route exact path="/" component={LandPage} />
-              <Route path="/*" component={Errors} />
-            </Switch>
-          ) : null}
+      <div>
+        <Navbar />
+        <NavbarOpt />
+        <Switch>
+          <Route path="/signup" component={SignUp} />
+          <Route path="/signin" component={SignIn} />
+          <Route exact path="/" component={LandPage} />
+          {!userNow.role ? <Route path="/*" component={Errors} />: null}
 
-          {userNow.role && userNow.role === "agent" ? (
-            <Switch>
+          {/* <Route path="/error" component={Errors} />
+        <Redirect from="/" to="/error" /> */}
+
+          {userNow.role && userNow.role !== "user" ? (
+            <>
               <PrivateRoute exact path="/profile" component={Profile} />
-              <Route exact path="/home" component={LandPage} />
-              <Route exact path="/" component={LandPage} />
               <Route path="/consulter" component={Consulting} />
+
               <Route path="/ajoutCompte/:id" component={VerifUsers} />
               <Route path="/depot" component={Depot} />
               <Route path="/dashOperations" component={NavbarOpt} />
@@ -81,48 +66,26 @@ function App() {
               <Route path="/csltUser" component={ConsultationSldBank} />
               <Route path="/histoUser" component={HistoComptes} />
               <Route path="/virements" component={Virement} />
-              <Route path={["/add", "/edit"]} component={Create} />
               <Route path="/*" component={Errors} />
-            </Switch>
-          ) : null}
 
-          {userNow.role && userNow.role === "admin" ? (
-            <Switch>
+              <Route path={["/add", "/edit"]} component={Create} />
+              {userNow.role === "admin" ? (
+                <Route path="/allAgents" component={AgentList} />
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            <>
               <PrivateRoute exact path="/profile" component={Profile} />
               <Route path="/consulter" component={Consulting} />
-              <Route exact path="/home" component={LandPage} />
-              <Route exact path="/" component={LandPage} />
-              <Route path="/ajoutCompte/:id" component={VerifUsers} />
-              <Route path="/depot" component={Depot} />
-              <Route path="/dashOperations" component={NavbarOpt} />
-              <Route path="/accounts" component={AccountList} />
-              <Route path="/newCompte/:id" component={NewCptUser} />
-              <Route path="/newBankAgent" component={SignUpAgent} />
-              <Route path="/ZoomUser/:id" component={ZoomUser} />
-              <Route path="/preverified" component={PreverifUsers} />
-              <Route path="/retrait" component={Retrait} />
-              <Route path="/csltUser" component={ConsultationSldBank} />
-              <Route path="/histoUser" component={HistoComptes} />
-              <Route path="/virements" component={Virement} />
-              <Route path={["/add", "/edit"]} component={Create} />
-              <Route path="/allAgents" component={AgentList} />
-              <Route path="/*" component={Errors} />
-            </Switch>
-          ) : null}
-
-          {userNow.role && userNow.role === "user" ? (
-            <Switch>
-              <PrivateRoute exact path="/profile" component={Profile} />
-              <Route path="/consulter" component={Consulting} />
-              <Route exact path="/home" component={LandPage} />
-              <Route exact path="/" component={LandPage} />
               <Route path="/myhistorique" component={MyHistorique} />
               {/* <Redirect exact from="/" to="/home" /> */}
               <Route path="/*" component={Errors} />
-            </Switch>
-          ) : null}
-        </div>
-      )}
+            </>
+          )}
+        </Switch>
+      </div>
 
       <Footer />
     </div>

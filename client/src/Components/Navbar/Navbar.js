@@ -3,16 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../JS/actions/user";
 
+import "./Navbar.css";
+
 const Navbar = () => {
   //   const user = useSelector((state) => state.userReducer.user);
   const isAuth = useSelector((state) => state.userReducer.isAuth);
   const dispatch = useDispatch();
 
   return (
-    <nav
-      className="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm"
-    
-    >
+    <nav className="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
       <div className="container">
         <Link to="/home">
           {/*<a href="/" className="navbar-brand">*/}

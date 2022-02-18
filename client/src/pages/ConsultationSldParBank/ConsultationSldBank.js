@@ -20,12 +20,13 @@ const account = useSelector((state) => state.compteReducer.account);
     <>
       {account ? (
         <>
-          <h1>Solde Du Compte : {account.soldeinitial}</h1>
+          <h1 className="white_text">
+            Solde Du Compte : {account.soldeinitial}
+          </h1>
           <Button onClick={reset}>Consulter Autre Compte</Button>
         </>
       ) : (
         <div>
-        
           {/*---- Include the above in your HEAD tag --------*/}
           <div className="container">
             <h1 className="well">Consultation du Solde</h1>

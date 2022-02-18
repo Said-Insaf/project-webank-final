@@ -21,8 +21,8 @@ export const signup = (newUser, history) => async (dispatch) => {
     dispatch({ type: SIGNUP_USER, payload: result.data }); //{msg,user,token}
     history.push("/SignIn");
   } catch (error) {
-    error.response.data.errors.map((el) => alert(el.msg));
-    dispatch({ type: FAIL_USER, payload: error.response.data.errors }); //{errors:[tableau des errors: name required, mail required etc...]}
+    // error.response.data.errors.map((el) => alert(el.msg));
+    dispatch({ type: FAIL_USER, payload: error.response.data }); //{errors:[tableau des errors: name required, mail required etc...]}
   }
 };
 export const signin = (user, history) => async (dispatch) => {
@@ -30,9 +30,9 @@ export const signin = (user, history) => async (dispatch) => {
   try {
     let result = await axios.post("/api/user/signin", user);
     dispatch({ type: SIGNIN_USER, payload: result.data });
-    console.log("**********userrrrrrrrr eli 7alel taw ******");
+    console.log("**********userrrrrrrrr eli 7al taw ******");
     console.log(result.data.user);
-    console.log("**********userrrrrrrrr eli 7alel taw ******");
+    console.log("**********userrrrrrrrr eli 7al taw ******");
     if (result.data.user.role === "user") {
       history.push("/Profile");
     } else if (result.data.user.role === "agent") {
@@ -41,11 +41,12 @@ export const signin = (user, history) => async (dispatch) => {
       history.push("/Profile");
     }
   } catch (error) {
-    error.response.data.errors.map((el) =>
-      setTimeout(function () {
-        alert(el.msg);
-      }, 3000)
-    );
+    // console.log(error);
+    // error.response.data.errors.map((el) =>
+    //   setTimeout(function() {
+    //     alert(el.msg);
+    //   }, 3000)
+    // );
     dispatch({ type: FAIL_USER, payload: error.response.data }); //{errors:[tableau des errors: name required, mail required etc...]}
   }
 };

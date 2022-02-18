@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../JS/actions/user";
 import UploadImg from "./UploadImage";
 import "./SignUp.css";
@@ -16,6 +16,8 @@ const SignUp = ({ history }) => {
     phone: "",
     adresse: "",
   });
+
+  const errors = useSelector((state) => state.userReducer.errors);
 
   // console.log(newUser);
   const dispatch = useDispatch();
@@ -58,6 +60,12 @@ const SignUp = ({ history }) => {
         <div className="form-holder">
           <div className="form-content">
             <div className="form-items">
+              {errors &&
+                errors.map((error, key) => (
+                  <h3 key={key} style={{ color: "red",fontSize:"16px" }}>
+                    {error.msg !== "not authorized" ? error.msg : ""}
+                  </h3>
+                ))}
               <h3>Devenir Client</h3>
               <p>VEUILLEZ RENSEIGNER LES CHAMPS SUIVANTS :</p>
               <form
@@ -147,6 +155,7 @@ const SignUp = ({ history }) => {
                     onChange={handleChange}
                   />
                   <input
+                    style={{ display: "none" }}
                     className="form-control"
                     type="password"
                     name="password"
@@ -269,7 +278,7 @@ const SignUp = ({ history }) => {
                     />
                   </div>
                 </div>
-                <br/>
+                <br />
 
                 <div className="form-group">
                   <label

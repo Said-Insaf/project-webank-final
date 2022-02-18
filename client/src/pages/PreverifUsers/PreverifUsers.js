@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnverifiedUsers } from "../../JS/actions/agent";
 import PreverifCard from "../../Components/PreverifCard/PreverifCard";
+import Loading from "../../Components/Loading/Loading";
 const PreverifUsers = () => {
   const dispatch = useDispatch();
   const listUnverifiedUsers = useSelector(
@@ -14,12 +15,12 @@ const PreverifUsers = () => {
   }, []);
   return (
     <div>
-      {load ? (
-        <h2>spinner</h2>
+      {!listUnverifiedUsers ? (
+        <Loading />
       ) : (
         <div>
           <h5 className="card-title text-uppercase mb-0">
-            Clients pré-enregistrés
+            <span className="white_text">Clients pré-enregistrés</span>
           </h5>
           {listUnverifiedUsers.map((el) => {
             return <PreverifCard user={el} key={el._id} />;

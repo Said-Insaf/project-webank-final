@@ -1,30 +1,43 @@
-import React , {useState} from 'react'
-import {useDispatch} from "react-redux"
-import { signupAgent } from '../../JS/actions/agent';
-const SignUpAgent = ({history}) => {
-const [newAgent, setNewAgent] = useState({
-  firstName: "",
-  email: "",
-  lastName: "",
-  password: "",
-  CIN: "",
-  gender: "",
-  position: "",
-  phone: "",
-});
-const dispatch = useDispatch()
-const handleChange=(e)=>{
-  setNewAgent({...newAgent,[e.target.name]: e.target.value})
-}
+import React, { useState,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signupAgent,clearErrors } from "../../JS/actions/agent";
+const SignUpAgent = ({ history }) => {
+  const [newAgent, setNewAgent] = useState({
+    firstName: "",
+    email: "",
+    lastName: "",
+    password: "",
+    CIN: "",
+    gender: "",
+    position: "Guichetier",
+    phone: "",
+  });
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    setNewAgent({ ...newAgent, [e.target.name]: e.target.value });
+  };
+
+  useEffect(()=>{
+    return ()=>{
+      dispatch(clearErrors());
+    }
+  },[])
+
+  const errors = useSelector((state) => state.accountReducer.errors);
 
   return (
     <div>
-      
       {/*---- Include the above in your HEAD tag --------*/}
       <div className="container">
         <h1 className="well">Fiche métier Agent administratif</h1>
         <div className="col-lg-12 well">
           <div className="row">
+            {errors &&
+              errors.map((error, key) => (
+                <h3 key={key} style={{ color: "red" }}>
+                  {error.msg}
+                </h3>
+              ))}
             <form>
               <div className="col-sm-12">
                 <div className="form-group">
@@ -146,6 +159,7 @@ const handleChange=(e)=>{
                     <select
                       className="form-control"
                       required
+                      value={newAgent.position}
                       name="position"
                       onChange={(e) => {
                         setNewAgent({ ...newAgent, position: e.target.value });
@@ -179,4 +193,4 @@ const handleChange=(e)=>{
     </div>
   );
 };
-export default SignUpAgent
+export default SignUpAgent;

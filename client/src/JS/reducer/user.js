@@ -16,7 +16,7 @@ const initialState = {
   loadUSer: false,
   errors: [],
   isAuth: false,
-  histos:null,
+  histos: null,
 };
 
 //pure function=> (initial state, action :type,payload)
@@ -33,7 +33,7 @@ const userReducer = (state = initialState, { type, payload }) => {
     case CURRENT_USER:
       return { ...state, loadUser: false, user: payload, isAuth: true };
     case FAIL_USER:
-      return { ...state, loadUser: false, errors: payload };
+      return { ...state, loadUser: false, errors: payload.errors };
     case CONSULTER_USER:
       return {
         ...state,
@@ -41,7 +41,7 @@ const userReducer = (state = initialState, { type, payload }) => {
         compteUser: payload,
         isAuth: true,
       };
-      case HISTO_USER:
+    case HISTO_USER:
       return {
         ...state,
         loadUser: false,

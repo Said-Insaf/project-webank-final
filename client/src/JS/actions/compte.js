@@ -84,17 +84,19 @@ export const virementUsers = (compte, reset) => async (dispatch) => {
     dispatch({ type: FAIL_COMPTE, payload: error.response });
   }
 };
-export const newCptUser = (id, newCompte) => async (dispatch) => {
+export const newCptUser = (id, newCompte, history) => async (dispatch) => {
   dispatch({ type: LOAD_COMPTE });
   try {
     console.log(newCompte);
     let result = await axios.put(`/api/agent/newCompte/${id}`, {
       ...newCompte,
     });
+
     console.log("*************************");
     console.log(result);
     console.log("*************************");
     dispatch({ type: NEW_COMPTE_SUCCESS, payload: result.data });
+    history.push("/accounts");
   } catch (error) {
     dispatch({
       type: FAIL_COMPTE,
@@ -102,15 +104,15 @@ export const newCptUser = (id, newCompte) => async (dispatch) => {
     });
   }
 };
-export const csltUser = (account, type) => async (dispatch) => {
+export const csltUser = (compte, type) => async (dispatch) => {
   if (type === "supp") {
     dispatch({ type: GET_SOLDE_SUCCESS, payload: null });
   } else {
     dispatch({ type: LOAD_COMPTE });
     try {
-      console.log(account);
+      console.log(compte);
       let result = await axios.get("/api/agent/csltUser", {
-        headers: { ...account },
+        headers: { ...compte },
       });
       console.log("************hello*************");
       console.log(result);

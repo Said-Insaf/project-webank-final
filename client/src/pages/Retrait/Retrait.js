@@ -115,16 +115,22 @@ const Retrait = () => {
             ""
           ) : (
             <div>
-              <h1>
-                Cher client,Votre opération de retrait a été bien effectuée. Le Numero de
+              <h1 className="white_text">
+                L'opération de retrait est effectuée avec succès. Le Numero de
                 compte : {fin_opt.RIB} a été mise à jour avec succès
               </h1>
-              <h1>
+              <h1 className="white_text">
                 Ancien solde :
                 {Number(fin_opt.soldeinitial) + Number(compte.montant)}
               </h1>
-              <h1> Montant à retirer : {compte.montant}</h1>
-              <h1> Nouveau solde : {fin_opt.soldeinitial}</h1>
+              <h1 className="white_text">
+                {" "}
+                Montant à retirer : {compte.montant}
+              </h1>
+              <h1 className="white_text">
+                {" "}
+                Nouveau solde : {fin_opt.soldeinitial}
+              </h1>
             </div>
           )}
         </div>

@@ -31,8 +31,8 @@ exports.CreateAccount = async (req, res, next) => {
     return res
       .status(200)
       .json({ msg: "compte created successfully", data: user });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
     return res.status(400).json({ msg: "y'a quelque chose qui cloche" });
   }
 };
@@ -146,7 +146,7 @@ exports.Virements = async (req, res) => {
     newhistoCpt1.montant = Number(req.body.montant);
     newhistoCpt1.compteId = comptExist._id;
     newhistoCpt1.operation = "Débit-virement";
-    // operation mta3 el tan9ys
+    // L'operation Débit
     comptExist.soldeinitial -= req.body.montant;
 
     newhistoCpt1.soldeFin = comptExist.soldeinitial;
@@ -160,7 +160,7 @@ exports.Virements = async (req, res) => {
     newhistoCpt2.montant = Number(req.body.montant);
     newhistoCpt2.compteId = compt2Exist._id;
     newhistoCpt2.operation = "Credit-virement";
-
+   //L'operation Crédit
     compt2Exist.soldeinitial =
       Number(compt2Exist.soldeinitial) + Number(req.body.montant);
 

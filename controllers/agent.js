@@ -175,6 +175,7 @@ exports.signupAgent = async (req, res) => {
       gender,
       CIN,
       position,
+      role: "agent",
     });
     newUser.password = hashedpassword;
     await newUser.save();
@@ -183,7 +184,6 @@ exports.signupAgent = async (req, res) => {
       .status(200)
       .send({ msg: "signup Employee with succefuly", agent: newUser });
   } catch (error) {
-    console.log(error);
     res
       .status(400)
       .send({ errors: [{ msg: "cannot register this Employee" }] });
@@ -257,8 +257,10 @@ exports.histoUser = async (req, res) => {
     if (!user) {
       return res.status(400).send({ msg: "utilisateur n existe pas" });
     }
-    const cpt = await Compte.findOne({ RIB: req.headers.rib }).populate("histos")
-      
+    const cpt = await Compte.findOne({ RIB: req.headers.rib }).populate(
+      "histos"
+    );
+
     if (!cpt) {
       return res.status(400).send({ msg: "verifier votre rib" });
     }
@@ -274,4 +276,3 @@ exports.histoUser = async (req, res) => {
       .send({ errors: [{ msg: "y'a quelque chose qui ne va pas" }] });
   }
 };
-

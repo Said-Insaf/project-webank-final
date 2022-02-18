@@ -6,6 +6,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   if (token) {
     return <Route component={Component} {...rest} />;
   }
-  return <Redirect to="/home" />;
+  return <Redirect exact to="/" />;
 };
 export default PrivateRoute;

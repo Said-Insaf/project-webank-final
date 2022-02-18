@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createAccount, editUser } from "../../JS/actions/agent";
 const Create = () => {
   const [user, setUser] = useState({});
@@ -9,9 +10,9 @@ const Create = () => {
   const dispatch = useDispatch();
   const edit = useSelector((state) => state.editAddReducer.edit);
   const userToEdit = useSelector((state) => state.accountReducer.user);
-  
+  //const errors = useSelector((state) => state.accountReducer.errors);
 
-
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     edit
@@ -32,11 +33,16 @@ const Create = () => {
           nature: "",
         });
   }, [userToEdit]);
+  const history = useHistory();
+
+  const goToAccounts = () => {
+    history.push("/accounts");
+  };
 
   const handleCreate = () => {
     edit
-      ? dispatch(editUser(userToEdit._id, user))
-      : dispatch(createAccount(user));
+      ? dispatch(editUser(userToEdit._id, user, goToAccounts, setError))
+      : dispatch(createAccount(user, goToAccounts, setError));
   };
 
   const handleChange = (e) => {
@@ -47,7 +53,11 @@ const Create = () => {
     <div>
       {/*---- Include the above in your HEAD tag --------*/}
       <div className="container">
-        <h1 className="well">Fiche Client</h1>
+        <h1 className="well">
+          Fiche Client
+          {error ? <h3 style={{ color: "red" }}>{error.msg}</h3> : null}
+        </h1>
+
         <div className="col-lg-12 well">
           <div className="row">
             <form>
@@ -234,7 +244,7 @@ const Create = () => {
                     />
                   </div>
 
-                  {edit ? null : (
+                  {!edit && (
                     <>
                       <div className="form-group">
                         <label>Numero de compte</label>
@@ -273,7 +283,7 @@ const Create = () => {
                   )}
                   <>
                     <Button onClick={handleCreate}>
-                      <Link to="/accounts">{edit ? "edit" : "add"}</Link>
+                      {edit ? "edit" : "add"}
                     </Button>
                   </>
                 </div>

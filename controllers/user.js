@@ -59,7 +59,7 @@ exports.signin = async (req, res) => {
 };
 exports.consulter = async (req, res) => {
   try {
-    // check if the email exist
+    // check if the RIB exist
     const compte = await Compte.findOne({ RIB: req.headers.rib });
 
     if (!compte) {
